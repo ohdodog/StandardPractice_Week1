@@ -17,17 +17,17 @@ public class RocketController : MonoBehaviour
 
     // TODO : OnMove 구현
     // private void OnMove...
-    private void OnMove(InputValue value)
+    public void OnMove(InputAction.CallbackContext context)
     {
-        Vector2 moveInput = value.Get<Vector2>().normalized;
+        Vector2 moveInput = context.ReadValue<Vector2>().normalized;
         _rocketMovement.ApplyMovement(moveInput);
     }
 
 
     // TODO : OnBoost 구현
     // private void OnBoost...
-    private void OnBoost(InputValue value)
+    public void OnBoost(InputAction.CallbackContext context)
     {
-        _rocketMovement.ApplyBoost(value.isPressed);
+        _rocketMovement.ApplyBoost(context.performed);
     }
 }

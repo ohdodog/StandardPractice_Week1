@@ -43,9 +43,16 @@ public class RocketMovement : MonoBehaviour
     private void Move(Vector2 direction)
     {
         // TODO : 움직임 적용
-        direction = direction * SPEED;
-        _rb2d.velocity = direction;
 
-
+        if (_isBoosted)
+        {
+            direction = direction * SPEED * 3;
+            _rb2d.velocity = direction;
+        }
+        else
+        {
+            direction = direction * SPEED;
+            _rb2d.velocity = direction;
+        }
     }
 }
